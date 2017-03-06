@@ -20,46 +20,50 @@ public class UserController {
 
     private UserService userService;
 
-    @Autowired
+    @Autowired(required = true)
     @Qualifier(value = "userService")
-    public void setUserService(UserService userService) {
+    public void setBookService(UserService userService) {
         this.userService = userService;
     }
 
-    @RequestMapping(name = "users", method = RequestMethod.GET)
-    public String listAllUsers(Model model) {
+    @RequestMapping(value = "users", method = RequestMethod.GET)
+    public String listUsers(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("users", this.userService.getAllUsers());
-        return "users";
-    }
-
-    @RequestMapping(name = "/users/add", method = RequestMethod.POST)
-    public String addUser(@ModelAttribute("user") User user) {
-        if (user.getId() == 0) {
-            this.userService.addUser(user);
-        } else {
-            this.userService.updateUser(user);
-        }
-        return "redirect:/users";
-    }
-
-    @RequestMapping("/delete/${id}")
-    public String deleteUser(@PathVariable("id") int id) {
-        this.userService.deleteUser(id);
-        return "redirect:/users";
-    }
-
-    @RequestMapping("/edit/${id}")
-    public String editUser(@PathVariable("id") int id, Model model) {
-        model.addAttribute(this.userService.getUserById(id));
         model.addAttribute("listUsers", this.userService.getAllUsers());
 
         return "users";
     }
 
-    @RequestMapping("/userdata/${id}")
-    public String userData(@PathVariable("id") int id, Model model) {
+    @RequestMapping(value = "/users/add", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("user") User user) {
+        if (user.getId() == 0) {
+            this.userService.addUser(user);
+        } else {
+            this.userService.updateUser(user);
+        }
+
+        return "redirect:/users";
+    }
+
+    @RequestMapping("/remove/{id}")
+    public String removeBook(@PathVariable("id") int id) {
+        this.userService.deleteUser(id);
+
+        return "redirect:/users";
+    }
+
+    @RequestMapping("edit/{id}")
+    public String editBook(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", this.userService.getUserById(id));
+        model.addAttribute("listUsers", this.userService.getAllUsers());
+
+        return "users";
+    }
+
+    @RequestMapping("userdata/{id}")
+    public String bookData(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", this.userService.getUserById(id));
+
         return "userdata";
     }
 }

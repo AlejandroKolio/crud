@@ -35,14 +35,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updateUser(User user) {
         Session session = this.sessionFactory.getCurrentSession();
-        session.persist(user);
+        session.update(user);
         logger.info("User has been updated.");
     }
 
     @Override
     public void deleteUser(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User)session.load(User.class, new Integer(id));
+        User user = (User)session.load(User.class, id);
 
         if(user != null) {
             session.delete(user);
@@ -54,7 +54,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User getUserById(int id) {
         Session session = this.sessionFactory.getCurrentSession();
-        User user = (User)session.load(User.class, new Integer(id));
+        User user = (User)session.load(User.class, id);
         logger.info("We got user from DB successfully. User details: " + user);
         return user;
     }

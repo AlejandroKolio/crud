@@ -1,6 +1,8 @@
 package com.crudapplication.model;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 import javax.persistence.*;
 
 /**
