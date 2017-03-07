@@ -25,10 +25,10 @@ public class User {
     private int age;
 
     @Column(name = "isAdmin")
-    private boolean isAdmin;
+    private boolean admin;
 
     @Column(name = "createdDate")
-    private Timestamp createdDate;
+    private String date;
 
     public int getId() {
         return id;
@@ -55,19 +55,19 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
-    public Timestamp getCreatedDate() {
-        return createdDate;
+    public String getDate() {
+        return date;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -76,8 +76,8 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", isAdmin=" + isAdmin +
-                ", createdDate=" + createdDate +
+                ", admin=" + admin +
+                ", date=" + date +
                 '}';
     }
 }

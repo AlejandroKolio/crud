@@ -12,6 +12,7 @@
     <title>Crud Application</title>
 </head>
 <body>
+    <h3>Java Rush Crud Test Application</h3>
     <a href="<c:url value="/users"/>" target="_blank">User list</a>
 </body>
 </html>

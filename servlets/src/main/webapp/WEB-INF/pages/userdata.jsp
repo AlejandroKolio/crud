@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ page session="false" %>
@@ -63,14 +62,17 @@
         <th width="80">ID</th>
         <th width="120">Name</th>
         <th width="120">Age</th>
+        <th width="120">Admin</th>
         <th width="120">Created Date</th>
     </tr>
     <tr>
         <td>${user.id}</td>
         <td>${user.name}</td>
         <td>${user.age}</td>
-        <td>${user.createdDate}</td>
+        <td>${user.admin}</td>
+        <td>${user.date}</td>
     </tr>
 </table>
+<p><a href="/users">Back to user list</a></p>
 </body>
 </html>
